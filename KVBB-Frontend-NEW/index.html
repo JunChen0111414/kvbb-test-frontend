@@ -396,10 +396,10 @@
                     <label>Antragsquartal <span class="required">*</span></label>
                     <select id="quartal">
                         <option value="">– Bitte wählen –</option>
-                        <option value="Q12025">I/2025 &nbsp;(Januar – März 2025)</option>
-                        <option value="Q22025">II/2025 &nbsp;(April – Juni 2025)</option>
-                        <option value="Q32025">III/2025 &nbsp;(Juli – September 2025)</option>
-                        <option value="Q42025">IV/2025 &nbsp;(Oktober – Dezember 2025)</option>
+                        <option value="Q12026">I/2026 &nbsp;(Januar – März 2026)</option>
+                        <option value="Q22026">II/2026 &nbsp;(April – Juni 2026)</option>
+                        <option value="Q32026">III/2026 &nbsp;(Juli – September 2026)</option>
+                        <option value="Q42026">IV/2026 &nbsp;(Oktober – Dezember 2026)</option>
                     </select>
                     <p class="hint">Geben Sie das Quartal an, für das abgerechnet werden soll.</p>
                 </div>
@@ -413,7 +413,12 @@
             <div class="form-body" id="step-3" style="display:none">
                 <div class="field-row">
                     <label>Abgabe bis zum</label>
-                    <div class="readonly-box">22.01.2026</div>
+                <div class="readonly-box" id="deadline-box"></div>
+                <script>
+                    const currentMonth = String(new Date().getMonth() + 1).padStart(2, '0');
+                    document.getElementById('deadline-box').innerText = `22.${currentMonth}.2026`;
+                </script>
+
                     <p class="hint">
                         Die Abgabefrist ist durch die KVBB festgesetzt und kann nicht geändert werden.
                         Anträge, die nach diesem Datum eingehen, können nicht mehr berücksichtigt werden.
@@ -451,8 +456,12 @@
                         <td id="prev-quartal">–</td>
                     </tr>
                     <tr>
-                        <td>Abgabe bis zum</td>
-                        <td>22.01.2026</td>
+                    <td>Abgabe bis zum</td>
+                    <td id="deadline-cell"></td>
+
+                    <script>
+                        document.getElementById('deadline-cell').textContent = `22.${currentMonth}.2026`;
+                    </script>
                     </tr>
                     <tr>
                         <td>Begründung</td>
@@ -488,7 +497,7 @@
                     </tr>
                     <tr>
                         <td>Abgabe bis zum</td>
-                        <td>22.01.2026</td>
+                        <td id='deadline-cell'>–</td>
                     </tr>
                     <tr>
                         <td>Begründung</td>
@@ -563,12 +572,15 @@
             var b = document.getElementById('begruendung').value.trim();
             var bsEl = document.getElementById('betriebsstaette');
             var qEl  = document.getElementById('quartal');
+            const now = new Date();
+            const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+            const abgabeFrist = `22.${currentMonth}.2026`;
 
             var payload = {
                 betriebsstaette:      bsEl.value,
                 antragsquartal:       qEl.value,
                 antragsquartalText:   qEl.options[qEl.selectedIndex].text,
-                abgabeFrist:          '22.01.2026',
+                abgabeFrist:          abgabeFrist,
                 begruendung:          b,
                 bearbeitungsstatus:   'in_bearbeitung',
                 eingangsdatum:        new Date().toISOString(),
@@ -623,3 +635,4 @@
     </script>
 </body>
 </html>
+
