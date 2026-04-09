@@ -252,7 +252,6 @@
                         <td>Begründung (eingereicht)</td>
                         <td id="res-reason" style="white-space:pre-wrap">–</td>
                     </tr>
-
                 </table>
 
                 <div class="nav-bar">
@@ -345,7 +344,7 @@
                 document.getElementById('res-frist').textContent   = data.abgabeFrist || '22.01.2026';
                 document.getElementById('res-datum').textContent   = datum2;
                 document.getElementById('res-reason').textContent  = data.begruendung || data.reason || '\u2013';
-                document.getElementById('res-ki').textContent      = data.ki_begruendung || data.ki_reason || '\u2013';
+
                 document.getElementById('search-panel').style.display = 'none';
                 document.getElementById('result-panel').style.display = 'block';
                 return;
@@ -467,4 +466,5 @@
     </script>
 </body>
 </html>
+
 
