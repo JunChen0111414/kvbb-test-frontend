@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abrechnungsportal – KVBB</title>
+    <title>Vorgangsstatus – KVBB</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: #d9e4f0;
@@ -30,29 +26,15 @@
             align-items: center;
             gap: 20px;
         }
-
-        .header img {
-            height: 64px;
-            background: white;
-            padding: 4px;
-        }
-
-        .header-text {
-            color: white;
-        }
-
+        .header img { height: 64px; background: white; padding: 4px; }
+        .header-text { color: white; }
         .header-text h1 {
             font-size: 22px;
             font-weight: bold;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-
-        .header-text p {
-            font-size: 12px;
-            color: #b8ccdf;
-            margin-top: 2px;
-        }
+        .header-text p { font-size: 12px; color: #b8ccdf; margin-top: 2px; }
 
         /* ── BREADCRUMB ──────────────────────────────────── */
         .breadcrumb {
@@ -61,7 +43,11 @@
             padding: 6px 24px;
             font-size: 11px;
             color: #b8ccdf;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        .breadcrumb a { color: #b8ccdf; }
 
         /* ── PAGE LAYOUT ─────────────────────────────────── */
         .page-wrapper {
@@ -78,7 +64,6 @@
             border: 1px solid #8fa8c3;
             border-top: 4px solid #003087;
         }
-
         .form-card-header {
             background-color: #e8eef5;
             border-bottom: 1px solid #8fa8c3;
@@ -87,7 +72,6 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .form-card-header h2 {
             font-size: 15px;
             color: #003087;
@@ -95,93 +79,20 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        .form-card-header .ref-no {
-            font-size: 11px;
-            color: #666;
-        }
-
-        /* ── STEP INDICATOR ──────────────────────────────── */
-        .step-bar {
-            display: flex;
-            border-bottom: 1px solid #8fa8c3;
-        }
-
-        .step-item {
-            flex: 1;
-            padding: 9px 6px;
-            text-align: center;
-            font-size: 11px;
-            color: #666;
-            border-right: 1px solid #8fa8c3;
-            background-color: #f2f4f7;
-            cursor: default;
-        }
-
-        .step-item:last-child {
-            border-right: none;
-        }
-
-        .step-item .step-num {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            line-height: 18px;
-            border: 1px solid #aaa;
-            font-size: 10px;
-            font-weight: bold;
-            margin-right: 4px;
-            background: white;
-            color: #666;
-        }
-
-        .step-item.active {
-            background-color: #003087;
-            color: white;
-            font-weight: bold;
-        }
-
-        .step-item.active .step-num {
-            background: white;
-            color: #003087;
-            border-color: white;
-        }
-
-        .step-item.done {
-            background-color: #5a7fa8;
-            color: white;
-        }
-
-        .step-item.done .step-num {
-            background: white;
-            color: #5a7fa8;
-            border-color: white;
-        }
+        .form-card-header .ref-no { font-size: 11px; color: #666; }
 
         /* ── FORM BODY ───────────────────────────────────── */
-        .form-body {
-            padding: 28px 24px 20px;
-        }
+        .form-body { padding: 28px 24px 20px; }
 
-        .field-row {
-            margin-bottom: 20px;
-        }
-
+        .field-row { margin-bottom: 20px; }
         .field-row label {
             display: block;
             font-weight: bold;
             color: #003087;
             margin-bottom: 5px;
         }
-
-        .field-row label .required {
-            color: #c8102e;
-            margin-left: 2px;
-        }
-
-        .field-row input[type="text"],
-        .field-row select,
-        .field-row textarea {
+        .field-row label .required { color: #c8102e; margin-left: 2px; }
+        .field-row input[type="text"] {
             width: 100%;
             padding: 7px 8px;
             border: 1px solid #8fa8c3;
@@ -189,44 +100,12 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: #ffffff;
             color: #1a1a1a;
-            appearance: auto;
         }
-
-        .field-row select:focus,
-        .field-row input:focus,
-        .field-row textarea:focus {
+        .field-row input:focus {
             outline: 2px solid #003087;
             outline-offset: 1px;
         }
-
-        .field-row textarea {
-            resize: vertical;
-            min-height: 130px;
-        }
-
-        .readonly-box {
-            width: 100%;
-            padding: 7px 8px;
-            border: 1px solid #8fa8c3;
-            background-color: #eef2f7;
-            font-size: 14px;
-            font-weight: bold;
-            color: #003087;
-        }
-
-        .hint {
-            font-size: 11px;
-            color: #666;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        /* ── DIVIDER ─────────────────────────────────────── */
-        .form-divider {
-            border: none;
-            border-top: 1px solid #cdd8e5;
-            margin: 6px 0 20px;
-        }
+        .hint { font-size: 11px; color: #666; margin-top: 4px; font-style: italic; }
 
         /* ── NAVIGATION BUTTONS ──────────────────────────── */
         .nav-bar {
@@ -237,7 +116,6 @@
             padding-top: 16px;
             border-top: 1px solid #cdd8e5;
         }
-
         .btn {
             padding: 7px 22px;
             font-size: 13px;
@@ -247,52 +125,24 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.4px;
+            display: inline-block;
+            text-decoration: none;
         }
+        .btn-primary { background-color: #003087; color: white; border-color: #00256e; }
+        .btn-primary:hover { background-color: #00256e; }
+        .btn-secondary { background-color: #e0e0e0; color: #333; border-color: #aaa; }
+        .btn-secondary:hover { background-color: #d0d0d0; }
+        .btn-widerspruch { background-color: #5a5a5a; color: white; border-color: #3a3a3a; }
+        .btn-widerspruch:hover { background-color: #3a3a3a; }
 
-        .btn-primary {
-            background-color: #003087;
-            color: white;
-            border-color: #00256e;
-        }
-
-        .btn-primary:hover {
-            background-color: #00256e;
-        }
-
-        .btn-secondary {
-            background-color: #e0e0e0;
-            color: #333;
-            border-color: #aaa;
-        }
-
-        .btn-secondary:hover {
-            background-color: #d0d0d0;
-        }
-
-        .btn-submit {
-            background-color: #c8102e;
-            color: white;
-            border-color: #a00c24;
-        }
-
-        .btn-submit:hover {
-            background-color: #a00c24;
-        }
-
-        /* ── SUMMARY PANEL (confirmation) ────────────────── */
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
+        /* ── SUMMARY TABLE ───────────────────────────────── */
+        .summary-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
         .summary-table tr td {
             padding: 7px 10px;
             border: 1px solid #cdd8e5;
             font-size: 13px;
             vertical-align: top;
         }
-
         .summary-table tr td:first-child {
             background-color: #eef2f7;
             font-weight: bold;
@@ -301,22 +151,19 @@
             white-space: nowrap;
         }
 
-        /* ── SUCCESS BOX ─────────────────────────────────── */
-        .success-box {
-            background-color: #e8f4e8;
-            border: 1px solid #5a9e5a;
-            border-left: 5px solid #2e7d2e;
+        /* ── STATUS BANNER ───────────────────────────────── */
+        .status-banner {
             padding: 14px 18px;
-            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-left-width: 5px;
             font-size: 14px;
-            color: #1a3d1a;
+            margin-bottom: 6px;
         }
-
-        .success-box strong {
-            display: block;
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
+        .status-banner strong { display: block; font-size: 15px; margin-bottom: 4px; }
+        .status-allow  { background-color: #e8f4e8; border-color: #2e7d2e; color: #1a3d1a; }
+        .status-deny   { background-color: #fdf0f0; border-color: #c8102e; color: #5a0010; }
+        .status-error  { background-color: #fffbe6; border-color: #b8860b; color: #5a4000; }
+        .status-pending { background-color: #eef2f7; border-color: #003087; color: #003087; }
 
         /* ── FOOTER ──────────────────────────────────────── */
         .footer {
@@ -328,7 +175,6 @@
             margin-top: 36px;
             border-top: 3px solid #c8102e;
         }
-
         .footer a { color: #b8ccdf; }
     </style>
 </head>
@@ -344,9 +190,9 @@
     </div>
 
     <!-- BREADCRUMB -->
-    <div class="breadcrumb" style="display:flex;justify-content:space-between;align-items:center;">
-        <span>Startseite &rsaquo; Abrechnung &rsaquo; Antrag einreichen</span>
-        <a href="status.html" style="color:#b8ccdf;">&#10142; Vorgangsstatus pr&uuml;fen</a>
+    <div class="breadcrumb">
+        <span>Startseite &rsaquo; Abrechnung &rsaquo; Vorgangsstatus</span>
+        <a href="index.html">&larr; Neuen Antrag stellen</a>
     </div>
 
     <!-- PAGE CONTENT -->
@@ -354,163 +200,67 @@
         <div class="form-card">
 
             <div class="form-card-header">
-                <h2>Abrechnungsantrag</h2>
-                <span class="ref-no">Formular: KV-ABR-01 &nbsp;|&nbsp; Stand: 01/2026</span>
+                <h2>Vorgangsstatus</h2>
+                <span class="ref-no">Formular: KV-STA-01 &nbsp;|&nbsp; Stand: 01/2026</span>
             </div>
 
-            <!-- STEP BAR -->
-            <div class="step-bar">
-                <div class="step-item active" id="ind-1">
-                    <span class="step-num">1</span>Betriebsstätte
-                </div>
-                <div class="step-item" id="ind-2">
-                    <span class="step-num">2</span>Antragsquartal
-                </div>
-                <div class="step-item" id="ind-3">
-                    <span class="step-num">3</span>Abgabefrist
-                </div>
-                <div class="step-item" id="ind-4">
-                    <span class="step-num">4</span>Begründung
-                </div>
-                <div class="step-item" id="ind-5">
-                    <span class="step-num">5</span>Zusammenfassung
-                </div>
-            </div>
-
-            <!-- ── STEP 1: BETRIEBSSTÄTTE ── -->
-            <div class="form-body" id="step-1">
+            <!-- ── SUCHEINGABE ── -->
+            <div class="form-body" id="search-panel">
                 <div class="field-row">
-                    <label>Betriebsstätte <span class="required">*</span></label>
-                    <input type="number" id="betriebsstaette" min="1" placeholder="z. B. 123456">
-                    <p class="hint">Geben Sie die Nummer der abrechnenden Betriebsstätte ein.</p>
+                    <label>Vorgangsnummer <span class="required">*</span></label>
+                    <input type="text" id="input-bs" placeholder="z. B. KVBB-2026-0001"
+                           style="text-transform:uppercase;max-width:320px;">
+                    <p class="hint">Sie finden die Vorgangsnummer in der Eingangsbestätigung Ihres Antrags.</p>
                 </div>
                 <div class="nav-bar">
                     <span></span>
-                    <button class="btn btn-primary" onclick="nextStep(1)">Weiter &rsaquo;</button>
+                    <button class="btn btn-primary" onclick="lookupStatus()">Status abrufen &rsaquo;</button>
                 </div>
             </div>
 
-            <!-- ── STEP 2: ANTRAGSQUARTAL ── -->
-            <div class="form-body" id="step-2" style="display:none">
-                <div class="field-row">
-                    <label>Antragsquartal <span class="required">*</span></label>
-                    <select id="quartal">
-                        <option value="">– Bitte wählen –</option>
-                        <option value="Q12026">I/2026 &nbsp;(Januar – März 2026)</option>
-                        <option value="Q22026">II/2026 &nbsp;(April – Juni 2026)</option>
-                        <option value="Q32026">III/2026 &nbsp;(Juli – September 2026)</option>
-                        <option value="Q42026">IV/2026 &nbsp;(Oktober – Dezember 2026)</option>
-                    </select>
-                    <p class="hint">Geben Sie das Quartal an, für das abgerechnet werden soll.</p>
-                </div>
-                <div class="nav-bar">
-                    <button class="btn btn-secondary" onclick="prevStep(2)">&lsaquo; Zurück</button>
-                    <button class="btn btn-primary" onclick="nextStep(2)">Weiter &rsaquo;</button>
-                </div>
-            </div>
+            <!-- ── ERGEBNIS ── -->
+            <div class="form-body" id="result-panel" style="display:none">
 
-            <!-- ── STEP 3: ABGABEFRIST ── -->
-            <div class="form-body" id="step-3" style="display:none">
-                <div class="field-row">
-                    <label>Abgabe bis zum</label>
-                <div class="readonly-box" id="deadline-box"></div>
-                <script>
-                    const currentMonth = String(new Date().getMonth() + 1).padStart(2, '0');
-                    document.getElementById('deadline-box').innerText = `22.${currentMonth}.2026`;
-                </script>
-
-                    <p class="hint">
-                        Die Abgabefrist ist durch die KVBB festgesetzt und kann nicht geändert werden.
-                        Anträge, die nach diesem Datum eingehen, können nicht mehr berücksichtigt werden.
-                    </p>
-                </div>
-                <div class="nav-bar">
-                    <button class="btn btn-secondary" onclick="prevStep(3)">&lsaquo; Zurück</button>
-                    <button class="btn btn-primary" onclick="nextStep(3)">Weiter &rsaquo;</button>
-                </div>
-            </div>
-
-            <!-- ── STEP 4: BEGRÜNDUNG ── -->
-            <div class="form-body" id="step-4" style="display:none">
-                <div class="field-row">
-                    <label>Begründung <span class="required">*</span></label>
-                    <textarea id="begruendung" placeholder="Bitte geben Sie hier Ihre Begründung für den Abrechnungsantrag ein …"></textarea>
-                    <p class="hint">Mindestens 20 Zeichen. Bitte begründen Sie Ihren Antrag sachlich und vollständig.</p>
-                </div>
-                <div class="nav-bar">
-                    <button class="btn btn-secondary" onclick="prevStep(4)">&lsaquo; Zurück</button>
-                    <button class="btn btn-primary" onclick="nextStep(4)">Weiter &rsaquo;</button>
-                </div>
-            </div>
-
-            <!-- ── STEP 5: ZUSAMMENFASSUNG ── -->
-            <div class="form-body" id="step-5" style="display:none">
-                <p style="margin-bottom:14px;color:#003087;font-weight:bold;">Bitte prüfen Sie Ihre Angaben vor dem Einreichen:</p>
-                <table class="summary-table">
-                    <tr>
-                        <td>Betriebsstätte (Nr.)</td>
-                        <td id="prev-bs">–</td>
-                    </tr>
-                    <tr>
-                        <td>Antragsquartal</td>
-                        <td id="prev-quartal">–</td>
-                    </tr>
-                    <tr>
-                    <td>Abgabe bis zum</td>
-                    <td id="deadline-cell"></td>
-
-                    <script>
-                        document.getElementById('deadline-cell').textContent = `22.${currentMonth}.2026`;
-                    </script>
-                    </tr>
-                    <tr>
-                        <td>Begründung</td>
-                        <td id="prev-begruendung" style="white-space:pre-wrap">–</td>
-                    </tr>
-                </table>
-                <div class="nav-bar">
-                    <button class="btn btn-secondary" onclick="prevStep(5)">&lsaquo; Zurück</button>
-                    <button class="btn btn-submit" onclick="submitForm()">Antrag einreichen &#10003;</button>
-                </div>
-            </div>
-
-            <!-- ── CONFIRMATION ── -->
-            <div class="form-body" id="step-confirm" style="display:none">
-                <div class="success-box">
-                    <strong>Ihr Antrag wurde erfolgreich eingereicht.</strong>
-                    Bitte notieren Sie Ihre Vorgangsnummer. Mit ihr können Sie den Status Ihres Antrags jederzeit abrufen.
-                </div>
-
-                <div style="text-align:center;margin:28px 0;">
-                    <div style="font-size:11px;color:#666;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">Ihre Vorgangsnummer</div>
-                    <div id="conf-vnr" style="font-size:26px;font-weight:bold;color:#003087;border:2px solid #003087;display:inline-block;padding:10px 36px;letter-spacing:4px;background:#eef2f7;">&ndash;</div>
+                <div id="status-banner" class="status-banner"></div>
+                <div id="widerspruch-banner" class="status-banner" style="display:none;background-color:#fff8e1;border-color:#f0a500;border-left-color:#c87800;color:#5a3a00;">
+                    <strong>&#9888; Widerspruch eingereicht</strong>
+                    Ihr Widerspruch wurde erfolgreich eingereicht. Ein Mitarbeiter wird sich zeitnah bei Ihnen melden.
                 </div>
 
                 <table class="summary-table">
                     <tr>
+                        <td>Vorgangsnummer</td>
+                        <td id="res-vnr" style="font-weight:bold;letter-spacing:2px;">–</td>
+                    </tr>
+                    <tr>
                         <td>Betriebsstätte (Nr.)</td>
-                        <td id="conf-bs">–</td>
+                        <td id="res-bs">–</td>
                     </tr>
                     <tr>
                         <td>Antragsquartal</td>
-                        <td id="conf-quartal">–</td>
+                        <td id="res-quartal">–</td>
                     </tr>
                     <tr>
                         <td>Abgabe bis zum</td>
-                        <td id='deadline-cell'>–</td>
-                    </tr>
-                    <tr>
-                        <td>Begründung</td>
-                        <td id="conf-begruendung" style="white-space:pre-wrap">–</td>
+                        <td id="res-frist">–</td>
                     </tr>
                     <tr>
                         <td>Eingegangen am</td>
-                        <td id="conf-datum">–</td>
+                        <td id="res-datum">–</td>
                     </tr>
+                    <tr>
+                        <td>Begründung (eingereicht)</td>
+                        <td id="res-reason" style="white-space:pre-wrap">–</td>
+                    </tr>
+
                 </table>
+
                 <div class="nav-bar">
-                    <button class="btn btn-secondary" onclick="resetForm()">Neuen Antrag stellen</button>
-                    <a href="status.html" class="btn btn-primary" style="text-decoration:none;">Vorgangsstatus prüfen &rsaquo;</a>
+                    <button class="btn btn-secondary" onclick="resetSearch()">&lsaquo; Neue Abfrage</button>
+                    <button class="btn btn-widerspruch" id="btn-widerspruch"
+                            onclick="widerspruch()" style="display:none;">
+                        Widerspruch einlegen
+                    </button>
                 </div>
             </div>
 
@@ -527,110 +277,192 @@
 
     <script src="config.js"></script>
     <script>
-        function showStep(n) {
-            var steps = ['step-1','step-2','step-3','step-4','step-5','step-confirm'];
-            steps.forEach(function(id) {
-                document.getElementById(id).style.display = 'none';
+        document.getElementById('input-bs').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') lookupStatus();
+        });
+
+        function lookupStatus() {
+            var vnr = document.getElementById('input-bs').value.trim().toUpperCase();
+            if (!vnr) { alert('Bitte geben Sie eine Vorgangsnummer ein.'); return; }
+
+            var n8nUrl = (window.ENV && window.ENV.N8N_URL) || '';
+            var btn = document.querySelector('#search-panel .btn-primary');
+            btn.disabled = true;
+            btn.textContent = 'Wird abgerufen …';
+
+            fetch((window.ENV && window.ENV.SERVER_URL || 'http://localhost:8000') + '/api/n8n', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ vorgangsnummer: vnr, art: 'status' })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var entry = Array.isArray(data) ? data[0] : data;
+                var output = (entry && entry.output) ? entry.output : entry;
+                showResult(output);
+            })
+            .catch(function(err) {
+                alert('Fehler bei der Abfrage:\n' + err.message);
+            })
+            .finally(function() {
+                btn.disabled = false;
+                btn.textContent = 'Status abrufen \u203a';
             });
-            var target = n === 6 ? 'step-confirm' : 'step-' + n;
-            document.getElementById(target).style.display = 'block';
-
-            for (var i = 1; i <= 5; i++) {
-                var ind = document.getElementById('ind-' + i);
-                ind.classList.remove('active', 'done');
-                if (i < n) ind.classList.add('done');
-                if (i === n) ind.classList.add('active');
-            }
         }
 
-        function nextStep(from) {
-            if (from === 1) {
-                var bs = document.getElementById('betriebsstaette').value.trim();
-                if (!bs) { alert('Bitte geben Sie eine Betriebsstättennummer ein.'); return; }
-            }
-            if (from === 2) {
-                var q = document.getElementById('quartal').value;
-                if (!q) { alert('Bitte wählen Sie ein Antragsquartal aus.'); return; }
-            }
-            if (from === 4) {
-                var b = document.getElementById('begruendung').value.trim();
-                if (b.length < 20) { alert('Bitte geben Sie eine ausreichende Begründung ein (mindestens 20 Zeichen).'); return; }
-                var bsEl = document.getElementById('betriebsstaette');
-                var qEl  = document.getElementById('quartal');
-                document.getElementById('prev-bs').textContent          = bsEl.value;
-                document.getElementById('prev-quartal').textContent     = qEl.options[qEl.selectedIndex].text;
-                document.getElementById('prev-begruendung').textContent = b;
-            }
-            showStep(from + 1);
+        function resetSearch() {
+            document.getElementById('result-panel').style.display = 'none';
+            document.getElementById('search-panel').style.display = 'block';
         }
 
-        function prevStep(from) {
-            showStep(from - 1);
+        // Speichert die zuletzt angezeigten Antragsdaten für den Widerspruch
+        var lastStatusData = null;
+
+        function showResult(data) {
+            lastStatusData = data;
+            var banner = document.getElementById('status-banner');
+            var widerspruchBtn = document.getElementById('btn-widerspruch');
+            var summaryTable = document.querySelector('#result-panel .summary-table');
+            var bearbeitungsstatus = (data.bearbeitungsstatus || '').toLowerCase();
+            var result = (data.ki_ergebnis || data.result || '').toLowerCase();
+
+            banner.className = 'status-banner';
+            widerspruchBtn.style.display = 'none';
+            document.getElementById('widerspruch-banner').style.display = 'none';
+
+            // Widerspruch bereits eingereicht
+            if (bearbeitungsstatus === 'widerspruch') {
+                summaryTable.style.display = '';
+                banner.classList.add('status-deny');
+                banner.innerHTML = '<strong>&#10007; Antrag abgelehnt</strong>' +
+                    'Ihr Verl\u00e4ngerungsantrag wurde durch die automatische Pr\u00fcfung nicht genehmigt.';
+                document.getElementById('widerspruch-banner').style.display = 'block';
+                var datum2 = data.eingangsdatum || '';
+                try { datum2 = new Date(datum2).toLocaleDateString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) + ' Uhr'; } catch(e) {}
+                document.getElementById('res-vnr').textContent     = data.vorgangsnummer || '\u2013';
+                document.getElementById('res-bs').textContent      = data.betriebsstaette || '\u2013';
+                document.getElementById('res-quartal').textContent = data.antragsquartal || '\u2013';
+                document.getElementById('res-frist').textContent   = data.abgabeFrist || '22.01.2026';
+                document.getElementById('res-datum').textContent   = datum2;
+                document.getElementById('res-reason').textContent  = data.begruendung || data.reason || '\u2013';
+                document.getElementById('res-ki').textContent      = data.ki_begruendung || data.ki_reason || '\u2013';
+                document.getElementById('search-panel').style.display = 'none';
+                document.getElementById('result-panel').style.display = 'block';
+                return;
+            }
+
+            if (bearbeitungsstatus !== 'erfolgreich') {
+                // Noch in Bearbeitung – nur Banner zeigen, keine Detaildaten
+                banner.classList.add('status-pending');
+                banner.innerHTML = '<strong>In Bearbeitung</strong>' +
+                    'Ihr Antrag wird derzeit geprüft. Bitte rufen Sie den Status sp\u00e4ter erneut ab.';
+                summaryTable.style.display = 'none';
+                document.getElementById('search-panel').style.display = 'none';
+                document.getElementById('result-panel').style.display = 'block';
+                return;
+            }
+
+            // Bearbeitung abgeschlossen – Detailtabelle einblenden
+            summaryTable.style.display = '';
+
+            if (result === 'allow') {
+                banner.classList.add('status-allow');
+                banner.innerHTML = '<strong>&#10003; Antrag freigegeben</strong>' +
+                    'Ihr Verl\u00e4ngerungsantrag wurde durch die automatische Pr\u00fcfung genehmigt.';
+            } else if (result === 'deny') {
+                banner.classList.add('status-deny');
+                banner.innerHTML = '<strong>&#10007; Antrag abgelehnt</strong>' +
+                    'Ihr Verl\u00e4ngerungsantrag wurde durch die automatische Pr\u00fcfung nicht genehmigt.';
+                widerspruchBtn.style.display = 'inline-block';
+            } else if (result === 'error') {
+                banner.classList.add('status-error');
+                banner.innerHTML = '<strong>Fehler bei der Pr\u00fcfung</strong>' +
+                    'Bei der automatischen Pr\u00fcfung ist ein technischer Fehler aufgetreten. ' +
+                    'Bitte setzen Sie sich mit der KVBB in Verbindung.';
+            } else {
+                banner.classList.add('status-pending');
+                banner.innerHTML = '<strong>In Bearbeitung</strong>' +
+                    'Ihr Antrag wird derzeit gepr\u00fcft. Bitte rufen Sie den Status sp\u00e4ter erneut ab.';
+            }
+
+            var datum = data.eingangsdatum || '';
+            try {
+                datum = new Date(datum).toLocaleDateString('de-DE', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                }) + ' Uhr';
+            } catch(e) {}
+
+            document.getElementById('res-vnr').textContent     = data.vorgangsnummer || '\u2013';
+            document.getElementById('res-bs').textContent      = data.betriebsstaette || '\u2013';
+            document.getElementById('res-quartal').textContent = data.antragsquartal  || '\u2013';
+            document.getElementById('res-frist').textContent   = data.abgabeFrist     || '22.01.2026';
+            document.getElementById('res-datum').textContent   = datum;
+            document.getElementById('res-reason').textContent  = data.begruendung || data.reason || '\u2013';
+            document.getElementById('res-ki').textContent      = data.ki_begruendung || data.ki_reason || '–';
+
+            document.getElementById('search-panel').style.display = 'none';
+            document.getElementById('result-panel').style.display = 'block';
         }
 
-        function submitForm() {
-            var b = document.getElementById('begruendung').value.trim();
-            var bsEl = document.getElementById('betriebsstaette');
-            var qEl  = document.getElementById('quartal');
-            const now = new Date();
-            const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
-            const abgabeFrist = `22.${currentMonth}.2026`;
-
-            var payload = {
-                betriebsstaette:      bsEl.value,
-                antragsquartal:       qEl.value,
-                antragsquartalText:   qEl.options[qEl.selectedIndex].text,
-                abgabeFrist:          abgabeFrist,
-                begruendung:          b,
-                bearbeitungsstatus:   'in_bearbeitung',
-                eingangsdatum:        new Date().toISOString(),
-                art:                  'neuer_antrag'
-            };
-
-            var submitBtn = document.querySelector('.btn-submit');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Wird gesendet …';
+        function widerspruch() {
+            if (!lastStatusData) {
+                alert('Keine Antragsdaten gefunden. Bitte laden Sie den Status erneut.');
+                return;
+            }
+            var payload = Object.assign({}, lastStatusData);
+            payload.art = 'widerspruch';
 
             var serverUrl = (window.ENV && window.ENV.SERVER_URL) || 'http://localhost:8000';
 
-            fetch(serverUrl + '/api/submit', {
+            // Button deaktivieren
+            var btn = document.getElementById('btn-widerspruch');
+            btn.disabled = true;
+            btn.textContent = 'Wird gesendet …';
+
+            fetch(serverUrl + '/api/n8n', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             })
-            .then(function(response) { return response.json(); })
-            .then(function(data) {
-                if (data.error) throw new Error(data.error);
-                if (!data.created_success) {
-                    throw new Error('Der Antrag konnte nicht angelegt werden. Bitte versuchen Sie es erneut.');
+            .then(function(response) { return response.text(); })
+            .then(function(text) {
+                var parsed = null;
+                var success = false;
+
+                try {
+                    parsed = JSON.parse(text);
+                } catch (e) {
+                    parsed = null;
                 }
 
-                document.getElementById('conf-vnr').textContent         = data.vorgangsnummer;
-                document.getElementById('conf-bs').textContent          = bsEl.value;
-                document.getElementById('conf-quartal').textContent     = qEl.options[qEl.selectedIndex].text;
-                document.getElementById('conf-begruendung').textContent = b;
-                document.getElementById('conf-datum').textContent =
-                    new Date().toLocaleDateString('de-DE', {
-                        day: '2-digit', month: '2-digit', year: 'numeric',
-                        hour: '2-digit', minute: '2-digit'
-                    }) + ' Uhr';
-                showStep(6);
+                if (parsed && typeof parsed === 'object') {
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        var first = parsed[0] || {};
+                        success = first.success === true || (first.output && first.output.success === true);
+                    } else {
+                        success = parsed.success === true || (parsed.output && parsed.output.success === true);
+                    }
+                }
+
+                if (!success) {
+                    alert('Widerspruch konnte nicht erfolgreich übermittelt werden.\n\nAntwort: ' + text);
+                    return;
+                }
+
+                // UI direkt auf "Widerspruch eingereicht" umschalten
+                document.getElementById('btn-widerspruch').style.display = 'none';
+                document.getElementById('status-banner').style.display = 'none';
+                document.getElementById('widerspruch-banner').style.display = 'block';
+                if (lastStatusData) lastStatusData.bearbeitungsstatus = 'widerspruch';
             })
             .catch(function(err) {
-                var msg = err.message || String(err);
-                alert('Der Antrag konnte nicht übermittelt werden.\n\nTechnisch: ' + msg);
+                alert('Fehler beim Senden des Widerspruchs: ' + err.message);
             })
             .finally(function() {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Antrag einreichen ✓';
+                btn.disabled = false;
+                btn.textContent = 'Widerspruch einlegen';
             });
-        }
-
-        function resetForm() {
-            document.getElementById('betriebsstaette').value = '';
-            document.getElementById('quartal').value = '';
-            document.getElementById('begruendung').value = '';
-            showStep(1);
         }
     </script>
 </body>
