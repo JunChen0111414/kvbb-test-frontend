@@ -452,7 +452,7 @@
                     </tr>
                     <tr>
                         <td>Abgabe bis zum</td>
-                        <td id="deadline-table-date"></td>
+                        <td id="deadline-summary-date"></td>
                     </tr>
                     <tr>
                         <td>Begründung</td>
@@ -488,7 +488,7 @@
                     </tr>
                     <tr>
                         <td>Abgabe bis zum</td>
-                        <td id="deadline-table-date"></td>
+                        <td id="deadline-confirm-date"></td>
                     </tr>
                     <tr>
                         <td>Begründung</td>
@@ -634,7 +634,21 @@
             if (deadlineBox) {
                 deadlineBox.textContent = frist;
             }
+
+            const summaryDate = document.getElementById('deadline-summary-date');
+            if (summaryDate) {
+                summaryDate.textContent = frist;
+            }
+
+            const confirmDate = document.getElementById('deadline-confirm-date');
+            if (confirmDate) {
+                confirmDate.textContent = frist;
+            }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderAbgabeFrist();
+        });
     </script>
 </body>
 </html>
